@@ -15,6 +15,19 @@ table.deck tr:last-child td{border-bottom:0}
 ol.steps{list-style:none;padding:0;margin:22px 0 0;counter-reset:st}
 ol.steps li{counter-increment:st;position:relative;padding:6px 0 6px 38px;color:var(--soft);font-size:15px}
 ol.steps li:before{content:counter(st,decimal-leading-zero);position:absolute;left:0;top:5px;color:var(--copper-2);font:600 13px var(--mono)}
+/* Плотный режим для табличных слайдов: кикер + заголовок + лид + таблица + список.
+   Меняются только слайды с классом dense, остальные полностью в каноне. */
+.slide.dense{padding:28px 48px 36px}
+.slide.dense h2{font-size:clamp(20px,2.4vw,26px)}
+.slide.dense .kicker{padding:5px 11px;margin-bottom:10px;font-size:10.5px}
+.slide.dense .lead{font-size:13.5px;line-height:1.35;margin:8px 0 0}
+.slide.dense .tbl{margin-top:10px;overflow:visible}
+.slide.dense table.deck{height:auto;min-height:0}
+.slide.dense table.deck{font-size:12.5px}
+.slide.dense table.deck th{padding:5px 8px}
+.slide.dense table.deck td{padding:3px 8px;font-size:12.5px;line-height:1.28}
+.slide.dense ul{margin-top:10px}
+.slide.dense li{padding:2px 0 2px 15px;font-size:13.5px}
 </style></head><body><main class="shell"><span class="kicker"><i data-lucide="clipboard-check"></i>Домашнее задание · поток 3, урок 1</span><h1>Настроить Claude и разобрать свои документы</h1><p class="lead">Цель не красивый результат, а понятный цикл: настройка, безопасный прогон по копии папки, подключение почты для контекста и проверка руками. Сдаёте то, что можно открыть и перепроверить.</p><div class="panel green"><h3><i data-lucide="calendar-clock"></i>Срок</h3><p>Держим срок до конца недели. Кто не успел, пишет в чат заранее, разберём точечно.</p></div><h2>Что сделать</h2><div class="panel"><h3><i data-lucide="list-ordered"></i>Шаги</h3><ol class="steps"><li>Настроить Claude под себя: проверить тумблеры, заполнить инструкции, выбрать ручной режим подтверждений.</li><li>Сделать копию безопасной папки с документами и убрать из неё всё лишнее.</li><li>Подключить к Claude только эту папку-копию.</li><li>Если нужен контекст из писем, подключить Gmail коннектором в разделе Connectors.</li><li>Запустить разбор документов по готовому промпту из шпаргалки.</li><li>Выполнить разбор и открыть полученный файл.</li><li>Взять пять случайных строк и сверить с оригиналами руками.</li><li>Сохранить результат и написать одну строку: что понял и что не получилось.</li></ol></div><h2>Безопасная папка</h2><div class="panel "><h3><i data-lucide="folder-lock"></i>Как готовим папку</h3><p>Работаем только на копии. В папку не попадают пароли, токены, персональные данные клиентов и чужие личные документы. Первый прогон идёт в ручном режиме подтверждений, чтобы видеть каждое действие до того, как оно случится.</p></div><h2>Что сдать</h2><div class="panel "><h3><i data-lucide="camera"></i>Отчёт</h3><ul><li>скриншот безопасной папки, с которой работали</li><li>скриншот файла правил проекта</li><li>скриншот результата разбора</li><li>одну строку: что понял и что не получилось</li></ul></div><h2>Готовые промпты</h2><h3>Разбор документов</h3><pre class="copy"><code>Работай с папкой «Документы-копия». Файлы не меняй и не удаляй, работай только на чтение.
 
 Задача: собрать один реестр по этим файлам и показать, где есть риски.
